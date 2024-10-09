@@ -18,6 +18,8 @@
   },
   "homepage": "https://github.com/RickWiltvank/techrank#readme",
   "dependencies": {
-    "express": "^4.21.1"
+    "express": "^4.21.1",
+    "firebase-admin": "^12.6.0",
+    "firebase-functions": "^6.0.1"
   }
 }
