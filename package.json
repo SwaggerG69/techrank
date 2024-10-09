@@ -1,0 +1,22 @@
+{
+  "name": "techrank",
+  "version": "1.0.0",
+  "description": "��#\u0000 \u0000t\u0000e\u0000c\u0000h\u0000r\u0000a\u0000n\u0000k\u0000\r\u0000 \u0000",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/RickWiltvank/techrank.git"
+  },
+  "author": "Rick",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/RickWiltvank/techrank/issues"
+  },
+  "homepage": "https://github.com/RickWiltvank/techrank#readme",
+  "dependencies": {
+    "express": "^4.21.1"
+  }
+}
