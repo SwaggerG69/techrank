@@ -17,16 +17,118 @@
         </nav>
     </header>
     <main>
-        <section>
-            <h2>Engineering Problems</h2>
+        <section id="problem-list">
+            <h2>Available Problems</h2>
             <ul>
-                <li>Problem 1: Calculate the efficiency of a heat exchanger.</li>
-                <li>Problem 2: Design a simple fluid flow system using Bernoulli's equation.</li>
-                <li>Problem 3: Analyze the stress in a beam under a distributed load.</li>
-                <li>Problem 4: Simulate the thermal performance of a solar panel.</li>
-                <li>Problem 5: Model the dynamics of a spring-mass system.</li>
+                <li><a href="#problem1">Problem 1: Energy Conservation</a></li>
+                <li><a href="#problem2">Problem 2: Fluid Dynamics</a></li>
+                <li><a href="#problem3">Problem 3: Heat Transfer</a></li>
             </ul>
         </section>
+        <section id="problem1">
+            <h3>Problem 1: Energy Conservation</h3>
+            <p>Energy conservation is a fundamental principle of physics stating that energy cannot be created or destroyed, only transformed from one form to another. This principle is crucial in various engineering applications, including mechanical systems, electrical systems, and thermodynamics.</p>
+            
+            <h4>Concepts Involved</h4>
+            <ul>
+                <li><strong>Kinetic Energy (KE):</strong> The energy of an object due to its motion, calculated as <code>KE = 0.5 * m * v^2</code>, where <code>m</code> is mass and <code>v</code> is velocity.</li>
+                <li><strong>Potential Energy (PE):</strong> The energy stored in an object due to its position or configuration, such as gravitational potential energy given by <code>PE = m * g * h</code>, where <code>g</code> is acceleration due to gravity and <code>h</code> is height.</li>
+            </ul>
+        
+            <h4>Example Problem</h4>
+            <p>Consider a roller coaster at the top of a hill with a height of 20 meters and a mass of 500 kg. Calculate the gravitational potential energy at the top of the hill and the kinetic energy at the bottom of the hill assuming no energy is lost to friction.</p>
+        
+            <h4>Solution</h4>
+            <p>1. Calculate the gravitational potential energy (PE) at the top:</p>
+            <p><code>PE = m * g * h</code></p>
+            <p><code>PE = 500 kg * 9.81 m/s² * 20 m = 98,100 J</code></p>
+            
+            <p>2. At the bottom of the hill, all potential energy is converted to kinetic energy (KE):</p>
+            <p><code>KE = PE = 98,100 J</code></p>
+            
+            <p>This demonstrates the conservation of energy: the potential energy at the top equals the kinetic energy at the bottom when friction and air resistance are ignored.</p>
+        </section>
+        <section id="problem2">
+            <h3>Problem 2: Fluid Dynamics</h3>
+            <p>Fluid dynamics is the study of the behavior of fluids (liquids and gases) in motion. It plays a crucial role in engineering disciplines such as mechanical, civil, and aerospace engineering. Understanding fluid dynamics is essential for the design of systems like pumps, turbines, and aircraft.</p>
+        
+            <h4>Key Concepts</h4>
+            <ul>
+                <li><strong>Continuity Equation:</strong> This equation states that for an incompressible fluid, the mass flow rate must remain constant from one cross-section of a pipe to another. It is given by:
+                    <code>A1 * V1 = A2 * V2</code>
+                    where <code>A</code> is the cross-sectional area and <code>V</code> is the fluid velocity.</li>
+                <li><strong>Bernoulli's Principle:</strong> This principle states that an increase in the speed of a fluid occurs simultaneously with a decrease in pressure or potential energy. It can be expressed as:
+                    <code>P + 0.5 * ρ * v² + ρ * g * h = constant</code>
+                    where <code>P</code> is pressure, <code>ρ</code> is fluid density, <code>v</code> is fluid velocity, <code>g</code> is acceleration due to gravity, and <code>h</code> is height above a reference level.</li>
+            </ul>
+        
+            <h4>Example Problem</h4>
+            <p>A water pipe has a diameter of 0.5 m at point 1 and a diameter of 0.25 m at point 2. If the velocity of water at point 1 is 2 m/s, calculate the velocity of water at point 2 and the pressure difference between the two points, assuming the water is incompressible and the effects of height are negligible.</p>
+        
+            <h4>Solution</h4>
+            <p>1. Calculate the cross-sectional areas:</p>
+            <p><code>A1 = π * (d1/2)² = π * (0.5/2)² ≈ 0.196 m²</code></p>
+            <p><code>A2 = π * (d2/2)² = π * (0.25/2)² ≈ 0.049 m²</code></p>
+            
+            <p>2. Apply the continuity equation to find <code>V2</code>:</p>
+            <p><code>A1 * V1 = A2 * V2</code></p>
+            <p><code>0.196 m² * 2 m/s = 0.049 m² * V2</code></p>
+            <p><code>V2 = (0.196 m² * 2 m/s) / 0.049 m² ≈ 8 m/s</code></p>
+        
+            <p>3. Use Bernoulli's equation to find the pressure difference:</p>
+            <p>Assuming the pressure at point 1 is <code>P1</code> and at point 2 is <code>P2</code>, we have:</p>
+            <p><code>P1 + 0.5 * ρ * V1² = P2 + 0.5 * ρ * V2²</code></p>
+            
+            <p>For water, <code>ρ ≈ 1000 kg/m³</code>. Thus:</p>
+            <p><code>P2 = P1 + 0.5 * ρ * (V1² - V2²)</code></p>
+            <p>Substituting the values:</p>
+            <p><code>P2 = P1 + 0.5 * 1000 kg/m³ * (2 m/s)² - 0.5 * 1000 kg/m³ * (8 m/s)²</code></p>
+            <p><code>P2 = P1 - 0.5 * 1000 kg/m³ * (64 - 4) = P1 - 30,000 Pa</code></p>
+            
+            <p>This result shows that the pressure at point 2 is lower than at point 1 due to the increase in fluid velocity, illustrating Bernoulli's principle.</p>
+        </section>
+        <section id="problem3">
+            <h3>Problem 3: Heat Transfer</h3>
+            <p>Heat transfer is the movement of thermal energy from one object or substance to another due to a temperature difference. It occurs through three primary mechanisms: conduction, convection, and radiation. Understanding heat transfer is vital in various engineering fields, including mechanical, chemical, and civil engineering.</p>
+        
+            <h4>Key Concepts</h4>
+            <ul>
+                <li><strong>Conduction:</strong> The process of heat transfer through a solid material without the movement of the material itself. Fourier's law describes this process:
+                    <code>q = -k * A * (dT/dx)</code>
+                    where <code>q</code> is the heat transfer rate, <code>k</code> is the thermal conductivity, <code>A</code> is the area, and <code>dT/dx</code> is the temperature gradient.</li>
+                <li><strong>Convection:</strong> The transfer of heat through a fluid (liquid or gas) caused by the motion of the fluid itself. The convective heat transfer can be calculated using:
+                    <code>q = h * A * ΔT</code>
+                    where <code>h</code> is the heat transfer coefficient, <code>A</code> is the area, and <code>ΔT</code> is the temperature difference between the surface and the fluid.</li>
+                <li><strong>Radiation:</strong> The transfer of heat in the form of electromagnetic waves. The Stefan-Boltzmann law gives the rate of heat transfer by radiation:
+                    <code>q = ε * σ * A * (T^4 - T_s^4)</code>
+                    where <code>ε</code> is the emissivity, <code>σ</code> is the Stefan-Boltzmann constant, <code>A</code> is the area, <code>T</code> is the absolute temperature of the radiating surface, and <code>T_s</code> is the absolute temperature of the surroundings.</li>
+            </ul>
+        
+            <h4>Example Problem</h4>
+            <p>A metal rod with a length of 1 m and a cross-sectional area of 0.01 m² has one end at a temperature of 100 °C and the other end at 25 °C. If the thermal conductivity of the metal is 50 W/(m·K), calculate the rate of heat transfer through the rod due to conduction.</p>
+        
+            <h4>Solution</h4>
+            <p>1. **Identify known values:**</p>
+            <ul>
+                <li>Length of the rod, <code>L = 1 m</code></li>
+                <li>Cross-sectional area, <code>A = 0.01 m²</code></li>
+                <li>Temperature at one end, <code>T1 = 100 °C</code></li>
+                <li>Temperature at the other end, <code>T2 = 25 °C</code></li>
+                <li>Thermal conductivity, <code>k = 50 W/(m·K)</code></li>
+            </ul>
+        
+            <p>2. **Calculate the temperature gradient:**</p>
+            <p><code>dT = T1 - T2 = 100 °C - 25 °C = 75 K</code></p>
+            <p><code>dT/dx = dT / L = 75 K / 1 m = 75 K/m</code></p>
+        
+            <p>3. **Apply Fourier's law for conduction:**</p>
+            <p><code>q = -k * A * (dT/dx)</code></p>
+            <p><code>q = -50 W/(m·K) * 0.01 m² * (75 K/m)</code></p>
+            <p><code>q = -37.5 W</code></p>
+            
+            <p>The negative sign indicates that heat is flowing from the higher temperature end to the lower temperature end. Therefore, the rate of heat transfer through the rod due to conduction is approximately <strong>37.5 Watts</strong>.</p>
+        </section>
+        
     </main>
     <footer>
         <p>&copy; 2024 TechRank. All rights reserved.</p>

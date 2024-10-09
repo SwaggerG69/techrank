@@ -32,11 +32,90 @@ nav a:hover {
     text-decoration: underline;
 }
 
-main {
-    padding: 20px;
-}
-
 footer {
     text-align: center;
     margin-top: 20px;
+}
+
+/* Main section styling */
+main {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
+
+/* Welcome section */
+.welcome-section {
+    text-align: center;
+    margin-bottom: 20px;
+}
+
+.welcome-section h2 {
+    color: #007BFF; /* Primary color */
+}
+
+/* Getting started section */
+.steps-list {
+    list-style-type: decimal;
+    padding-left: 20px;
+}
+
+.getting-started {
+    background-color: #e9f7fe;
+    border-left: 4px solid #007BFF;
+    padding: 15px;
+    margin-bottom: 20px;
+}
+
+/* Featured challenges section */
+.challenge-list {
+    list-style-type: none;
+    padding: 0;
+}
+
+.challenge-list li {
+    background: #f0f4ff;
+    margin: 5px 0;
+    padding: 10px;
+    border-radius: 4px;
+    transition: background 0.3s;
+}
+
+.challenge-list li:hover {
+    background: #e1efff;
+}
+
+/* Why join section */
+.benefits-list {
+    list-style-type: disc;
+    padding-left: 20px;
+    margin-bottom: 20px;
+}
+
+/* Motivational message */
+.motivational-message {
+    text-align: center;
+    font-style: italic;
+    color: #555;
+}
+
+/* Animation for the animated character */
+.animated-character {
+    text-align: center;
+    animation: bounce 1.5s ease infinite;
+}
+
+@keyframes bounce {
+    0%, 20%, 50%, 80%, 100% {
+        transform: translateY(0);
+    }
+    40% {
+        transform: translateY(-30px);
+    }
+    60% {
+        transform: translateY(-15px);
+    }
 }
