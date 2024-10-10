@@ -119,3 +119,98 @@ main {
         transform: translateY(-15px);
     }
 }
+
+/* Center the navigation bar */
+.navbar {
+    text-align: center;
+    margin-top: 20px;
+}
+
+/* Style the unordered list in the navigation */
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+/* Center the list items horizontally */
+.navbar ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+/* Style the links in the navbar */
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 18px;
+    color: #333;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+/* Add hover effect to links */
+.navbar ul li a:hover {
+    background-color: #ddd;
+}
+
+/* Emoji size adjustment (optional) */
+.navbar ul li a {
+    font-size: 20px; /* adjust font size for emojis */
+}
+
+/* Main Title Styling */
+.main-title {
+    font-size: 3rem;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 40px;
+    color: #333;
+}
+
+/* Highlight the 'TechRank' word with a different color */
+.main-title span {
+    color: #007BFF; /* Make it stand out with a blue color */
+}
+
+/* Subtitle Styling */
+.subtitle {
+    text-align: center;
+    font-size: 1.5rem;
+    margin-top: 10px;
+    color: #555;
+}
+
+/* Add some spacing between title and navbar */
+.navbar {
+    margin-top: 20px;
+}
+
+/* Center the navigation bar */
+.navbar ul {
+    list-style-type: none;
+    padding: 0;
+    text-align: center;
+}
+
+/* Style the list items horizontally */
+.navbar ul li {
+    display: inline-block;
+    margin: 0 15px;
+}
+
+/* Style the links */
+.navbar ul li a {
+    text-decoration: none;
+    font-size: 20px;
+    color: #333;
+    padding: 10px 20px;
+    background-color: #f0f0f0;
+    border-radius: 10px;
+    transition: background-color 0.3s;
+}
+
+/* Hover effect */
+.navbar ul li a:hover {
+    background-color: #ddd;
+}

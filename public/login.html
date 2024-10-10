@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>TechRank Login</title>
+    <style>
+        body {
+            font-family: 'Arial', sans-serif;
+            background-color: #e0f7fa;
+            margin: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+        }
+
+        .login-container {
+            background-color: white;
+            padding: 30px;
+            border-radius: 12px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .login-container h2 {
+            margin-bottom: 20px;
+            font-size: 24px;
+            color: #00796b;
+        }
+
+        select {
+            width: 100%;
+            padding: 12px;
+            margin: 12px 0;
+            border: 1px solid #00796b;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        button {
+            background-color: #00796b;
+            color: white;
+            padding: 12px;
+            width: 100%;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        button:hover {
+            background-color: #004d40;
+        }
+
+        .login-message {
+            margin-top: 20px;
+            font-size: 18px;
+            color: #00796b;
+        }
+    </style>
+</head>
+<body>
+    <div class="login-container">
+        <h2>Login to TechRank</h2>
+        <label for="user-select">Select a User:</label>
+        <select id="user-select">
+            <option value="User 1">Alice</option>
+            <option value="User 2">Bob</option>
+            <option value="User 3">Charlie</option>
+        </select>
+        <button onclick="login()">Login</button>
+    </div>
+
+    <script>
+        // Dummy user data
+        const users = {
+            "User 1": { name: "Alice", elo: 1300 }, // Gold
+        "User 2": { name: "Bob", elo: 950 },    // Bronze
+        "User 3": { name: "Charlie", elo: 1800 }, // Uranium
+        };
+
+        // Function to handle login
+        function login() {
+            const selectedUserKey = document.getElementById("user-select").value;
+            const user = users[selectedUserKey];
+
+            // Store user in localStorage
+            localStorage.setItem('loggedInUser', JSON.stringify(user));
+
+            // Redirect to home page
+            window.location.href = "index.html";
+        }
+    </script>
+</body>
+</html>

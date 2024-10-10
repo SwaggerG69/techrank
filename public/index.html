@@ -5,27 +5,197 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to TechRank</title>
     <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file if needed -->
+    <style>
+        .user-info {
+            font-size: 18px;
+            margin-top: 10px;
+            color: #00796b;
+        }
+
+        /* Tier Badge Styling */
+        .tier-badge {
+            display: inline-block;
+            padding: 5px 10px;
+            margin-left: 10px;
+            border-radius: 12px;
+            font-size: 14px;
+            font-weight: bold;
+        }
+
+        /* Copper Tier */
+        .copper {
+            background-color: #b87333; /* Copper color */
+            color: white;
+        }
+
+        /* Bronze Tier */
+        .bronze {
+            background-color: #cd7f32; /* Bronze color */
+            color: white;
+        }
+
+        /* Silver Tier */
+        .silver {
+            background-color: #c0c0c0; /* Silver color */
+            color: black;
+        }
+
+        /* Gold Tier */
+        .gold {
+            background-color: #ffd700; /* Gold color */
+            color: black;
+        }
+
+        /* Platinum Tier */
+        .platinum {
+            background-color: #00bfff; /* Platinum color */
+            color: white;
+        }
+
+        /* Diamond Tier */
+        .diamond {
+            background-color: #b9f2ff; /* Diamond color */
+            color: black;
+        }
+
+        /* Uranium Tier */
+        .uranium {
+            background-color: #39FF14; /* Bright Neon Green */
+        color: black;
+        }
+        /* Container for the Elo Table */
+        .elo-table-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            margin: 40px auto;
+            padding: 20px;
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            max-width: 900px;
+            width: 90%;
+        }
+
+        /* Table Styling */
+        .elo-table {
+            width: 100%;
+            border-collapse: separate;
+            border-spacing: 0;
+            text-align: center;
+        }
+
+        .elo-table th, .elo-table td {
+            padding: 10px 15px; /* Reduced padding for a more compact look */
+            border-bottom: 1px solid #ddd;
+            border-right: 1px solid #eee; /* Light border between columns */
+        }
+
+        /* Remove the border-right for the last column to avoid double lines */
+        .elo-table th:last-child, .elo-table td:last-child {
+            border-right: none;
+        }
+
+        .elo-table th {
+            background-color: #0056b3; /* Darker blue for distinct header */
+            color: white;
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+            border-bottom: 4px solid #003f7f; /* Thicker border at the bottom */
+        }
+
+        .elo-table tr:last-child td {
+            border-bottom: none; /* Remove bottom border for the last row */
+        }
+
+        .elo-table tr:first-child th {
+            border-top-left-radius: 12px;
+            border-top-right-radius: 12px;
+        }
+
+        .elo-table td {
+            font-size: 16px;
+        }
+
+        .elo-table tr:hover {
+            background-color: #f1f1f1; /* Hover effect */
+        }
+        .user-info {
+    text-align: center; /* Center text inside the div */
+    margin: 0 auto; /* Center the div itself horizontally */
+    width: fit-content; /* Optional: Makes the div only as wide as its content */
+}
+    </style>
 </head>
 <body>
-  <header>
-    <h1>Welcome to TechRank!</h1>
-</header>
-<nav>
-  <ul>
-      <li><a href="index.html">Home</a></li>
-      <li><a href="problems.html">Problems</a></li>
-  </ul>
+    <div class="animated-character">
+        <h1 class="main-title">🚀 Welcome to <span>TechRank</span> 🚀</h1>
+        <p class="subtitle">Your platform for engineering challenges and fun! 💻🛠️</p>
+    </div>
+    <div class="user-info" id="user-info"></div> 
+<nav class="navbar">
+    <ul>
+        <li><a href="index.html">🏠 Home</a></li>
+        <li><a href="problems.html">💡 Problems</a></li>
+        <li><a href="login.html">🔑 Login</a></li> <!-- Added the Login link -->
+    </ul>
+
 </nav>
 <main>
-    <div class="animated-character">
-        <h1>🎉 Welcome to TechRank! 🎉</h1>
-    </div>
   <section class="welcome-section">
-      <h2>Welcome to TechRank!</h2>
+      <h2>TechRank!</h2>
       <p>Your platform for engineering challenges and rankings.</p>
       <p>Get started by solving problems and earning points!</p>
       <p>Join a community of engineering enthusiasts and showcase your skills.</p>
   </section>
+  <section class="elo-table-container">
+    <table class="elo-table">
+        <thead>
+            <tr>
+                <th>Tier</th>
+                <th>Elo Range</th>
+                <th>Color</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr class="copper">
+                <td>Copper</td>
+                <td>0 - 799</td>
+                <td>🟫 Copper</td>
+            </tr>
+            <tr class="bronze">
+                <td>Bronze</td>
+                <td>800 - 999</td>
+                <td>🟤 Bronze</td>
+            </tr>
+            <tr class="silver">
+                <td>Silver</td>
+                <td>1000 - 1199</td>
+                <td>⚪ Silver</td>
+            </tr>
+            <tr class="gold">
+                <td>Gold</td>
+                <td>1200 - 1399</td>
+                <td>🟡 Gold</td>
+            </tr>
+            <tr class="platinum">
+                <td>Platinum</td>
+                <td>1400 - 1599</td>
+                <td>🔵 Platinum</td>
+            </tr>
+            <tr class="diamond">
+                <td>Diamond</td>
+                <td>1600 - 1799</td>
+                <td>🔷 Diamond</td>
+            </tr>
+            <tr class="uranium">
+                <td>Uranium</td>
+                <td>1800+</td>
+                <td>🟢 Uranium</td>
+            </tr>
+        </tbody>
+    </table>
+</section>
 
   <section class="getting-started">
       <h3>How to Get Started</h3>
@@ -65,5 +235,27 @@
     <footer>
         <p>&copy; 2024 TechRank. All rights reserved.</p>
     </footer>
+    <script>
+        // Check if user is logged in
+        const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
+
+        // Function to determine the tier based on Elo
+        function getTier(elo) {
+            if (elo < 800) return { tier: "Copper", class: "copper" };
+            if (elo < 1000) return { tier: "Bronze", class: "bronze" };
+            if (elo < 1200) return { tier: "Silver", class: "silver" };
+            if (elo < 1400) return { tier: "Gold", class: "gold" };
+            if (elo < 1600) return { tier: "Platinum", class: "platinum" };
+            if (elo < 1800) return { tier: "Diamond", class: "diamond" };
+            return { tier: "Uranium", class: "uranium" };
+        }
+
+        // If logged in, show their name, Elo rating, and tier
+        if (loggedInUser) {
+            const tierInfo = getTier(loggedInUser.elo);
+            document.getElementById('user-info').innerHTML = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo} 
+                <span class="tier-badge ${tierInfo.class}">${tierInfo.tier}</span>`;
+        }
+    </script>
 </body>
-</html>
+</html> 
