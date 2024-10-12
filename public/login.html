@@ -65,21 +65,39 @@
     <div class="login-container">
         <h2>Login to TechRank</h2>
         <label for="user-select">Select a User:</label>
-        <select id="user-select">
-            <option value="User 1">Alice</option>
-            <option value="User 2">Bob</option>
-            <option value="User 3">Charlie</option>
-        </select>
+        <select id="user-select"></select> <!-- Empty dropdown to populate dynamically -->
         <button onclick="login()">Login</button>
     </div>
 
     <script>
         // Dummy user data
         const users = {
-            "User 1": { name: "Alice", elo: 1300 }, // Gold
-        "User 2": { name: "Bob", elo: 950 },    // Bronze
-        "User 3": { name: "Charlie", elo: 1800 }, // Uranium
+            "User 1": { name: "Alice", elo: 1300 },   // Gold
+            "User 2": { name: "Bob", elo: 950 },      // Bronze
+            "User 3": { name: "Charlie", elo: 1800 }, // Titanium
+            "User 4": { name: "Woody", elo: 50 },     // Copper (low Elo)
+            "User 5": { name: "Einstein", elo: 2500 } // Carbon (very high Elo)
         };
+
+        // Function to populate the dropdown menu with users
+        function populateUserDropdown() {
+            const userSelect = document.getElementById("user-select");
+            userSelect.innerHTML = ''; // Clear any existing options
+
+            // Loop through the users object and create an option for each user
+            for (const key in users) {
+                if (users.hasOwnProperty(key)) {
+                    const user = users[key];
+                    const option = document.createElement("option");
+                    option.value = key;
+                    option.textContent = user.name; // Show the user's name in the dropdown
+                    userSelect.appendChild(option);
+                }
+            }
+        }
+
+        // Call the populateUserDropdown function when the page loads
+        window.onload = populateUserDropdown;
 
         // Function to handle login
         function login() {

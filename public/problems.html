@@ -88,10 +88,11 @@
         <div class="problem-card">
             <h2>Math Problem</h2>
             <p>Solve the following problem to earn 50 Elo points:</p>
-            <p><strong>What is 7 + 5?</strong></p>
+            <p id="problem-statement"><strong></strong></p>
             <input type="number" id="answer" placeholder="Enter your answer" />
             <button onclick="submitAnswer()">Submit Answer</button>
             <p class="result-message" id="result-message"></p>
+            <button onclick="loadNewProblem()">New Problem</button>
         </div>
     </div>
 
@@ -109,26 +110,57 @@
             window.location.href = "login.html"; // Redirect to login page if not logged in
         }
 
+        // Array of math problems
+        const problems = [
+            { problem: "What is 7 + 5?", answer: 12 },
+            { problem: "What is 9 * 3?", answer: 27 },
+            { problem: "What is 15 - 4?", answer: 11 },
+            { problem: "What is 8 / 2?", answer: 4 },
+            { problem: "What is 14 + 6?", answer: 20 }
+        ];
+
+        let currentProblemIndex = 0;
+
+        // Function to load a new problem
+        function loadNewProblem() {
+            currentProblemIndex = Math.floor(Math.random() * problems.length); // Randomly select a new problem
+            document.getElementById("problem-statement").textContent = problems[currentProblemIndex].problem;
+            document.getElementById("answer").value = ""; // Clear previous answer
+            document.getElementById("result-message").textContent = ""; // Clear result message
+        }
+
         // Function to submit the answer and check correctness
         function submitAnswer() {
             const userAnswer = parseInt(document.getElementById("answer").value, 10);
-            const correctAnswer = 12;
+            const correctAnswer = problems[currentProblemIndex].answer;
             const resultMessage = document.getElementById("result-message");
 
             if (userAnswer === correctAnswer) {
                 // Correct answer: increase Elo points by 50
                 loggedInUser.elo += 50;
-                localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser)); // Update in localStorage
-
                 resultMessage.textContent = "Correct! You earned 50 Elo points!";
-                userInfoDiv.textContent = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo}`;
                 resultMessage.style.color = "green";
             } else {
-                // Incorrect answer
-                resultMessage.textContent = "Incorrect. Try again!";
+                // Incorrect answer: decrease Elo points by 20
+                loggedInUser.elo -= 20;
+                if (loggedInUser.elo < 0) {
+                    loggedInUser.elo = 0;  // Ensure Elo doesn't go below 0
+                }
+                resultMessage.textContent = "Incorrect. You lost 20 Elo points.";
                 resultMessage.style.color = "red";
             }
+
+            // Update the user's Elo score in localStorage
+            localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+
+            // Update the displayed user info
+            userInfoDiv.textContent = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo}`;
         }
+
+        // Load the first problem when page loads
+        loadNewProblem();
     </script>
 </body>
+
+
 </html>

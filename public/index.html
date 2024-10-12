@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Welcome to TechRank</title>
-    <link rel="stylesheet" href="styles.css"> <!-- Link to your CSS file if needed -->
+    <link rel="stylesheet" href="styles.css"> <!-- Link to your external CSS file -->
+</head>
     <style>
         .user-info {
             font-size: 18px;
@@ -22,48 +23,87 @@
             font-weight: bold;
         }
 
-        /* Copper Tier */
+        /* Navbar styling */
+        .navbar {
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .navbar ul {
+            list-style-type: none;
+            padding: 0;
+        }
+
+        .navbar ul li {
+            display: inline;
+            margin-right: 20px;
+        }
+
+        .navbar ul li a {
+            text-decoration: none;
+            color: #00796b;
+            font-size: 18px;
+        }
+
+        .navbar ul li a:hover {
+            color: #004d40;
+        }
+
+        .logout-button {
+            background-color: #e57373;
+            color: white;
+            padding: 10px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .logout-button:hover {
+            background-color: #d32f2f;
+        }
+
+        /* Other styles (e.g., table and tier styles) */
         .copper {
-            background-color: #b87333; /* Copper color */
+            background-color: #b87333;
             color: white;
         }
 
-        /* Bronze Tier */
         .bronze {
-            background-color: #cd7f32; /* Bronze color */
+            background-color: #cd7f32;
             color: white;
         }
 
-        /* Silver Tier */
         .silver {
-            background-color: #c0c0c0; /* Silver color */
+            background-color: #c0c0c0;
             color: black;
         }
 
-        /* Gold Tier */
         .gold {
-            background-color: #ffd700; /* Gold color */
+            background-color: #ffd700;
             color: black;
         }
 
-        /* Platinum Tier */
         .platinum {
-            background-color: #00bfff; /* Platinum color */
+            background-color: #00bfff;
             color: white;
         }
 
-        /* Diamond Tier */
         .diamond {
-            background-color: #b9f2ff; /* Diamond color */
+            background-color: #b9f2ff;
             color: black;
         }
 
-        /* Uranium Tier */
-        .uranium {
-            background-color: #39FF14; /* Bright Neon Green */
-        color: black;
+        .titanium {
+            background-color: #878787;
+            color: white;
         }
-        /* Container for the Elo Table */
+
+        .carbon {
+            background-color: #343434;
+            color: white;
+        }
+
         .elo-table-container {
             display: flex;
             justify-content: center;
@@ -77,7 +117,6 @@
             width: 90%;
         }
 
-        /* Table Styling */
         .elo-table {
             width: 100%;
             border-collapse: separate;
@@ -86,31 +125,25 @@
         }
 
         .elo-table th, .elo-table td {
-            padding: 10px 15px; /* Reduced padding for a more compact look */
+            padding: 10px 15px;
             border-bottom: 1px solid #ddd;
-            border-right: 1px solid #eee; /* Light border between columns */
+            border-right: 1px solid #eee;
         }
 
-        /* Remove the border-right for the last column to avoid double lines */
         .elo-table th:last-child, .elo-table td:last-child {
             border-right: none;
         }
 
         .elo-table th {
-            background-color: #0056b3; /* Darker blue for distinct header */
+            background-color: #0056b3;
             color: white;
             border-top-left-radius: 12px;
             border-top-right-radius: 12px;
-            border-bottom: 4px solid #003f7f; /* Thicker border at the bottom */
+            border-bottom: 4px solid #003f7f;
         }
 
         .elo-table tr:last-child td {
-            border-bottom: none; /* Remove bottom border for the last row */
-        }
-
-        .elo-table tr:first-child th {
-            border-top-left-radius: 12px;
-            border-top-right-radius: 12px;
+            border-bottom: none;
         }
 
         .elo-table td {
@@ -118,13 +151,14 @@
         }
 
         .elo-table tr:hover {
-            background-color: #f1f1f1; /* Hover effect */
+            background-color: #f1f1f1;
         }
+
         .user-info {
-    text-align: center; /* Center text inside the div */
-    margin: 0 auto; /* Center the div itself horizontally */
-    width: fit-content; /* Optional: Makes the div only as wide as its content */
-}
+            text-align: center;
+            margin: 0 auto;
+            width: fit-content;
+        }
     </style>
 </head>
 <body>
@@ -133,108 +167,83 @@
         <p class="subtitle">Your platform for engineering challenges and fun! 💻🛠️</p>
     </div>
     <div class="user-info" id="user-info"></div> 
-<nav class="navbar">
-    <ul>
-        <li><a href="index.html">🏠 Home</a></li>
-        <li><a href="problems.html">💡 Problems</a></li>
-        <li><a href="login.html">🔑 Login</a></li> <!-- Added the Login link -->
-    </ul>
 
-</nav>
-<main>
-  <section class="welcome-section">
-      <h2>TechRank!</h2>
-      <p>Your platform for engineering challenges and rankings.</p>
-      <p>Get started by solving problems and earning points!</p>
-      <p>Join a community of engineering enthusiasts and showcase your skills.</p>
-  </section>
-  <section class="elo-table-container">
-    <table class="elo-table">
-        <thead>
-            <tr>
-                <th>Tier</th>
-                <th>Elo Range</th>
-                <th>Color</th>
-            </tr>
-        </thead>
-        <tbody>
-            <tr class="copper">
-                <td>Copper</td>
-                <td>0 - 799</td>
-                <td>🟫 Copper</td>
-            </tr>
-            <tr class="bronze">
-                <td>Bronze</td>
-                <td>800 - 999</td>
-                <td>🟤 Bronze</td>
-            </tr>
-            <tr class="silver">
-                <td>Silver</td>
-                <td>1000 - 1199</td>
-                <td>⚪ Silver</td>
-            </tr>
-            <tr class="gold">
-                <td>Gold</td>
-                <td>1200 - 1399</td>
-                <td>🟡 Gold</td>
-            </tr>
-            <tr class="platinum">
-                <td>Platinum</td>
-                <td>1400 - 1599</td>
-                <td>🔵 Platinum</td>
-            </tr>
-            <tr class="diamond">
-                <td>Diamond</td>
-                <td>1600 - 1799</td>
-                <td>🔷 Diamond</td>
-            </tr>
-            <tr class="uranium">
-                <td>Uranium</td>
-                <td>1800+</td>
-                <td>🟢 Uranium</td>
-            </tr>
-        </tbody>
-    </table>
-</section>
+    <!-- Navigation Bar -->
+    <nav class="navbar">
+        <ul id="nav-links">
+            <li><a href="index.html">🏠 Home</a></li>
+            <li><a href="problems.html">💡 Problems</a></li>
+            <!-- The login/logout button will be dynamically inserted here -->
+        </ul>
+    </nav>
 
-  <section class="getting-started">
-      <h3>How to Get Started</h3>
-      <ol class="steps-list">
-          <li><strong>Create an Account:</strong> Sign up to access all challenges and track your progress.</li>
-          <li><strong>Choose a Challenge:</strong> Browse through our library of problems in various engineering fields.</li>
-          <li><strong>Submit Your Solution:</strong> Solve the problem and submit your answer to earn points and feedback.</li>
-          <li><strong>Climb the Rankings:</strong> Compete with others and see how you stack up on our leaderboard!</li>
-      </ol>
-  </section>
+    <main>
+        <section class="welcome-section">
+            <h2>TechRank!</h2>
+            <p>Your platform for engineering challenges and rankings.</p>
+            <p>Get started by solving problems and earning points!</p>
+            <p>Join a community of engineering enthusiasts and showcase your skills.</p>
+        </section>
 
-  <section class="featured-challenges">
-      <h3>Featured Challenges</h3>
-      <ul class="challenge-list">
-          <li><a href="#problem1">Energy Conservation Challenge</a> - Solve problems related to energy efficiency.</li>
-          <li><a href="#problem2">Fluid Dynamics Challenge</a> - Tackle issues involving fluid flow and behavior.</li>
-          <li><a href="#problem3">Heat Transfer Challenge</a> - Explore problems focused on thermal dynamics.</li>
-          <li><a href="#problem4">Material Strength Challenge</a> - Test your knowledge on material properties and stress analysis.</li>
-          <li><a href="#problem5">Thermodynamics Challenge</a> - Work on problems that involve heat, work, and energy systems.</li>
-      </ul>
-  </section>
+        <section class="elo-table-container">
+            <table class="elo-table">
+                <thead>
+                    <tr>
+                        <th>Tier</th>
+                        <th>Elo Range</th>
+                        <th>Color</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr class="copper">
+                        <td>Copper</td>
+                        <td>0 - 799</td>
+                        <td>🥄 Copper</td>
+                    </tr>
+                    <tr class="bronze">
+                        <td>Bronze</td>
+                        <td>800 - 999</td>
+                        <td>🥉 Bronze</td>
+                    </tr>
+                    <tr class="silver">
+                        <td>Silver</td>
+                        <td>1000 - 1199</td>
+                        <td>🥈 Silver</td>
+                    </tr>
+                    <tr class="gold">
+                        <td>Gold</td>
+                        <td>1200 - 1399</td>
+                        <td>🥇 Gold</td>
+                    </tr>
+                    <tr class="platinum">
+                        <td>Platinum</td>
+                        <td>1400 - 1599</td>
+                        <td>💎 Platinum</td>
+                    </tr>
+                    <tr class="diamond">
+                        <td>Diamond</td>
+                        <td>1600 - 1799</td>
+                        <td>🔷 Diamond</td>
+                    </tr>
+                    <tr class="titanium">
+                        <td>Titanium</td>
+                        <td>1800 - 1999</td>
+                        <td>⚙️ Titanium</td>
+                    </tr>
+                    <tr class="carbon">
+                        <td>Carbon</td>
+                        <td>2000+</td>
+                        <td>🖤 Carbon</td>
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+    </main>
 
-  <section class="why-join">
-      <h3>Why Join TechRank?</h3>
-      <ul class="benefits-list">
-          <li>Enhance your engineering skills through practical challenges.</li>
-          <li>Connect with like-minded individuals and expand your network.</li>
-          <li>Earn badges and rewards for your achievements.</li>
-          <li>Stay updated with the latest trends and technologies in engineering.</li>
-      </ul>
-  </section>
-
-  <section class="motivational-message">
-      <p>Get ready to dive into the world of engineering challenges and take your skills to the next level!</p>
-  </section>
-</main>
     <footer>
         <p>&copy; 2024 TechRank. All rights reserved.</p>
     </footer>
+
     <script>
         // Check if user is logged in
         const loggedInUser = JSON.parse(localStorage.getItem('loggedInUser'));
@@ -247,7 +256,8 @@
             if (elo < 1400) return { tier: "Gold", class: "gold" };
             if (elo < 1600) return { tier: "Platinum", class: "platinum" };
             if (elo < 1800) return { tier: "Diamond", class: "diamond" };
-            return { tier: "Uranium", class: "uranium" };
+            if (elo < 2000) return { tier: "Titanium", class: "titanium" };
+            return { tier: "Carbon", class: "carbon" };
         }
 
         // If logged in, show their name, Elo rating, and tier
@@ -255,7 +265,23 @@
             const tierInfo = getTier(loggedInUser.elo);
             document.getElementById('user-info').innerHTML = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo} 
                 <span class="tier-badge ${tierInfo.class}">${tierInfo.tier}</span>`;
+
+            // Add a logout button to the navbar
+            document.getElementById('nav-links').innerHTML += `
+                <li><button class="logout-button" onclick="logout()">Logout</button></li>
+            `;
+        } else {
+            // If not logged in, show the login link
+            document.getElementById('nav-links').innerHTML += `
+                <li><a href="login.html">🔑 Login</a></li>
+            `;
+        }
+
+        // Logout function to clear localStorage and redirect to login page
+        function logout() {
+            localStorage.removeItem('loggedInUser'); // Clear the logged-in user
+            window.location.href = "login.html";     // Redirect to login page
         }
     </script>
 </body>
-</html> 
+</html>
