@@ -4,7 +4,6 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>TechRank - Solve Problems</title>
-    <link rel="stylesheet" href="styles.css">
     <style>
         body {
             font-family: Arial, sans-serif;
@@ -32,7 +31,7 @@
             flex-direction: column;
             align-items: center;
             justify-content: center;
-            height: 80vh;
+            height: 60vh;
             text-align: center;
         }
 
@@ -76,6 +75,64 @@
             font-size: 18px;
             margin-top: 20px;
         }
+
+        .difficulty-buttons {
+            margin: 20px;
+            text-align: center;
+        }
+
+        /* Back to Home button styling */
+        .home-button {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #ddd;
+        }
+
+        /* Difficulty buttons based on new theme: Wood, Gold, Diamond, Watchout */
+        .difficulty-buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .difficulty-buttons button.easy {
+            background-color: #8B4513; /* Wood (SaddleBrown) */
+        }
+
+        .difficulty-buttons button.medium {
+            background-color: #FFD700; /* Gold */
+            color: black;
+        }
+
+        .difficulty-buttons button.hard {
+            background-color: #B9F2FF; /* Diamond */
+            color: black;
+        }
+
+        .difficulty-buttons button.goodluck {
+            background-color: #FF4500; /* Watchout (OrangeRed) */
+            color: white;
+        }
+
+        .difficulty-buttons button:hover {
+            opacity: 0.9;
+        }
     </style>
 </head>
 <body>
@@ -84,10 +141,20 @@
         <div class="user-info" id="user-info">Logged in as: Not logged in</div>
     </header>
 
+    <!-- Back to Home button -->
+    <a href="index.html" class="home-button">🏠 Back to Home</a>
+
+    <div class="difficulty-buttons">
+        <button class="easy" onclick="changeDifficulty('easy')">🪵 Wood</button>
+        <button class="medium" onclick="changeDifficulty('medium')">🥇 Gold</button>
+        <button class="hard" onclick="changeDifficulty('hard')">💎 Diamond</button>
+        <button class="goodluck" onclick="changeDifficulty('goodluck')">⚠️ Watchout</button> <!-- Watchout with ⚠️ sign -->
+    </div>
+
     <div class="problem-container">
         <div class="problem-card">
             <h2>Math Problem</h2>
-            <p>Solve the following problem to earn 50 Elo points:</p>
+            <p id="difficulty-display">Difficulty: Wood</p> <!-- Display difficulty -->
             <p id="problem-statement"><strong></strong></p>
             <input type="number" id="answer" placeholder="Enter your answer" />
             <button onclick="submitAnswer()">Submit Answer</button>
@@ -110,43 +177,87 @@
             window.location.href = "login.html"; // Redirect to login page if not logged in
         }
 
-        // Array of math problems
-        const problems = [
-            { problem: "What is 7 + 5?", answer: 12 },
-            { problem: "What is 9 * 3?", answer: 27 },
-            { problem: "What is 15 - 4?", answer: 11 },
-            { problem: "What is 8 / 2?", answer: 4 },
-            { problem: "What is 14 + 6?", answer: 20 }
-        ];
+        // Categorized math problems: Easy (Wood), Medium (Gold), Hard (Diamond), Good Luck (Watchout)
+        const problems = {
+            easy: [
+                { problem: "What is 5 + 3?", answer: 8 },
+                { problem: "What is 7 - 2?", answer: 5 },
+                { problem: "What is 6 + 4?", answer: 10 },
+                { problem: "What is 8 - 5?", answer: 3 }
+            ],
+            medium: [
+                { problem: "What is 12 * 3?", answer: 36 },
+                { problem: "What is 36 ÷ 6?", answer: 6 },
+                { problem: "What is 45 + 28?", answer: 73 },
+                { problem: "What is 72 - 34?", answer: 38 }
+            ],
+            hard: [
+                { problem: "What is 124 * 3?", answer: 372 },
+                { problem: "What is 144 ÷ 12?", answer: 12 },
+                { problem: "What is 258 + 367?", answer: 625 },
+                { problem: "What is 512 - 278?", answer: 234 }
+            ],
+            goodluck: [
+                { 
+                    problem: "Find the 10,001st prime number.", 
+                    answer: 104743 // This is the correct answer to Project Euler Problem 7 
+                }
+            ]
+        };
 
-        let currentProblemIndex = 0;
+        let currentProblem;
+        let currentDifficulty = 'easy'; // Default difficulty level
 
-        // Function to load a new problem
+        // Function to load a new problem based on difficulty
         function loadNewProblem() {
-            currentProblemIndex = Math.floor(Math.random() * problems.length); // Randomly select a new problem
-            document.getElementById("problem-statement").textContent = problems[currentProblemIndex].problem;
+            const selectedProblems = problems[currentDifficulty]; // Select problems based on difficulty
+            currentProblem = selectedProblems[Math.floor(Math.random() * selectedProblems.length)];
+            document.getElementById("problem-statement").textContent = currentProblem.problem;
+            document.getElementById("difficulty-display").textContent = `Difficulty: ${capitalize(currentDifficulty)}`;
             document.getElementById("answer").value = ""; // Clear previous answer
             document.getElementById("result-message").textContent = ""; // Clear result message
+        }
+
+        // Function to change difficulty
+        function changeDifficulty(difficulty) {
+            currentDifficulty = difficulty;
+            loadNewProblem(); // Load a new problem when difficulty changes
+        }
+
+        // Function to capitalize the first letter of difficulty
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
         }
 
         // Function to submit the answer and check correctness
         function submitAnswer() {
             const userAnswer = parseInt(document.getElementById("answer").value, 10);
-            const correctAnswer = problems[currentProblemIndex].answer;
+            const correctAnswer = currentProblem.answer;
             const resultMessage = document.getElementById("result-message");
 
+            let eloChange;
+            if (currentDifficulty === 'easy') {
+                eloChange = { correct: 20, incorrect: -10 };
+            } else if (currentDifficulty === 'medium') {
+                eloChange = { correct: 50, incorrect: -20 };
+            } else if (currentDifficulty === 'hard') {
+                eloChange = { correct: 100, incorrect: -40 };
+            } else if (currentDifficulty === 'goodluck') {
+                eloChange = { correct: 200, incorrect: -100 }; // Larger Elo for the Good Luck category
+            }
+
             if (userAnswer === correctAnswer) {
-                // Correct answer: increase Elo points by 50
-                loggedInUser.elo += 50;
-                resultMessage.textContent = "Correct! You earned 50 Elo points!";
+                // Correct answer: increase Elo points
+                loggedInUser.elo += eloChange.correct;
+                resultMessage.textContent = `Correct! You earned ${eloChange.correct} Elo points!`;
                 resultMessage.style.color = "green";
             } else {
-                // Incorrect answer: decrease Elo points by 20
-                loggedInUser.elo -= 20;
+                // Incorrect answer: decrease Elo points
+                loggedInUser.elo += eloChange.incorrect;
                 if (loggedInUser.elo < 0) {
                     loggedInUser.elo = 0;  // Ensure Elo doesn't go below 0
                 }
-                resultMessage.textContent = "Incorrect. You lost 20 Elo points.";
+                resultMessage.textContent = `Incorrect. You lost ${Math.abs(eloChange.incorrect)} Elo points.`;
                 resultMessage.style.color = "red";
             }
 
@@ -157,10 +268,8 @@
             userInfoDiv.textContent = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo}`;
         }
 
-        // Load the first problem when page loads
+        // Load the first problem when the page loads
         loadNewProblem();
     </script>
 </body>
-
-
 </html>
