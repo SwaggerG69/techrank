@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Physics Problems - TechRank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f9;
+            margin: 0;
+            padding: 0;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .problem-container {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 60vh;
+            text-align: center;
+        }
+
+        .problem-card {
+            background: white;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 12px;
+            padding: 20px;
+            max-width: 600px;
+            width: 90%;
+        }
+
+        .problem-card h2 {
+            margin-top: 0;
+        }
+
+        .problem-card button {
+            background-color: #007BFF;
+            color: white;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+
+        .problem-card button:hover {
+            background-color: #0056b3;
+        }
+
+        .result-message {
+            font-size: 18px;
+            margin-top: 20px;
+        }
+
+        .home-button {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #ddd;
+        }
+        
+        .difficulty-buttons {
+            margin: 20px;
+            text-align: center;
+        }
+
+        /* Difficulty buttons based on theme */
+        .difficulty-buttons button {
+            padding: 10px 20px;
+            margin: 0 10px;
+            border-radius: 8px;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+            color: white;
+            font-weight: bold;
+        }
+
+        .difficulty-buttons button.easy {
+            background-color: #8B4513; /* Wood */
+        }
+
+        .difficulty-buttons button.medium {
+            background-color: #FFD700; /* Gold */
+            color: black;
+        }
+
+        .difficulty-buttons button.hard {
+            background-color: #B9F2FF; /* Diamond */
+            color: black;
+        }
+
+        .difficulty-buttons button.bonus {
+            background-color: #FF4500; /* Watchout sign for Good Luck */
+            color: white;
+        }
+
+        .difficulty-buttons button:hover {
+            opacity: 0.9;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Physics Problems</h1>
+        <p>Select a difficulty level and start solving physics problems to earn Elo points.</p>
+    </header>
+
+    <!-- Back to Problems Page button -->
+    <a href="categories.html" class="home-button">🔙 Back to Categories</a>
+    <div class="difficulty-buttons">
+        <button class="easy" onclick="loadProblems('mechanics')">⚙️ Mechanics (Easy)</button>
+        <button class="medium" onclick="loadProblems('thermodynamics')">🔥 Thermodynamics (Medium)</button>
+        <button class="hard" onclick="loadProblems('electromagnetism')">⚡ Electromagnetism (Hard)</button>
+        <button class="bonus" onclick="loadProblems('quantum')">🔮 Quantum (Bonus)</button>
+    </div>
+
+    <div class="problem-container">
+        <div class="problem-card">
+            <h2>Physics Problem</h2>
+            <p id="difficulty-display">Difficulty: Easy</p> <!-- Display difficulty -->
+            <p id="problem-statement"><strong></strong></p>
+            <input type="number" id="answer" placeholder="Enter your answer" />
+            <button onclick="submitAnswer()">Submit Answer</button>
+            <p class="result-message" id="result-message"></p>
+            <button onclick="loadNewProblem()">New Problem</button>
+        </div>
+    </div>
+
+    <script>
+        // Define your problem sets for each category
+        const problems = {
+            mechanics: [
+                { problem: "What is the speed of an object that travels 50 meters in 5 seconds?", answer: 10 },
+                { problem: "A car accelerates from rest at 2 m/s² for 4 seconds. What is its velocity?", answer: 8 },
+                { problem: "What is the force on a 5 kg object accelerating at 3 m/s²?", answer: 15 }, // F = ma
+                { problem: "A 10 kg object is pushed with a force of 50 N. What is its acceleration?", answer: 5 } // F = ma
+            ],
+            thermodynamics: [
+                { problem: "What is the first law of thermodynamics?", answer: 1 }, // Conceptual question
+                { problem: "A gas is compressed at a constant pressure of 2 atm, decreasing the volume from 5 L to 2 L. How much work is done?", answer: 6 }, // Work = P * ΔV
+                { problem: "If 500 J of heat is added to a system and the system does 300 J of work, what is the change in internal energy?", answer: 200 },
+                { problem: "What is the efficiency of an engine that performs 1000 J of work using 4000 J of heat?", answer: 25 } // Efficiency = W/Qin * 100
+            ],
+            electromagnetism: [
+                { problem: "What is the magnetic force on a charge of 2 C moving with a velocity of 3 m/s in a 1 T magnetic field?", answer: 6 }, // F = qvB
+                { problem: "Calculate the potential difference across a 5 Ω resistor with a current of 2 A.", answer: 10 }, // V = IR
+                { problem: "What is the capacitance of a capacitor with a charge of 0.05 C and a voltage of 10 V?", answer: 0.005 }, // C = Q/V
+                { problem: "What is the electric field strength created by a 2 C charge at a distance of 0.5 m?", answer: 72000000 } // E = k * q / r²
+            ],
+            quantum: [
+                { problem: "What is the Heisenberg uncertainty principle?", answer: 1 }, // Conceptual question for a bonus problem
+                { problem: "What is the energy of a photon with a wavelength of 500 nm?", answer: 1 },
+                { problem: "What is the probability amplitude of a particle in a box?", answer: 1 }, // Conceptual
+                { problem: "What is Planck's constant?", answer: 6.626e-34 }
+            ]
+        };
+    
+        let currentProblem;
+        let currentDifficulty = 'mechanics'; // Default difficulty level for physics
+    
+        // Function to load problems based on difficulty
+        function loadProblems(difficulty) {
+            currentDifficulty = difficulty;
+            loadNewProblem();
+        }
+    
+        // Function to load a new problem
+        function loadNewProblem() {
+            const selectedProblems = problems[currentDifficulty];
+            currentProblem = selectedProblems[Math.floor(Math.random() * selectedProblems.length)];
+            document.getElementById("problem-statement").textContent = currentProblem.problem;
+            document.getElementById("difficulty-display").textContent = `Difficulty: ${capitalize(currentDifficulty)}`;
+            document.getElementById("answer").value = ""; // Clear previous answer
+            document.getElementById("result-message").textContent = ""; // Clear result message
+        }
+    
+        // Function to capitalize first letter of difficulty
+        function capitalize(str) {
+            return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    
+        // Function to submit the answer and check correctness
+        function submitAnswer() {
+            const userAnswer = document.getElementById("answer").value;
+            const correctAnswer = currentProblem.answer;
+            const resultMessage = document.getElementById("result-message");
+    
+            if (userAnswer == correctAnswer) {
+                resultMessage.textContent = "Correct! You earned points!";
+                resultMessage.style.color = "green";
+            } else {
+                resultMessage.textContent = "Incorrect. Try again!";
+                resultMessage.style.color = "red";
+            }
+        }
+    
+        // Load the first problem when the page loads
+        loadNewProblem();
+    </script>
+    
+</body>
+</html>

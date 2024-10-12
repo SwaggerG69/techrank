@@ -1,0 +1,135 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Categories - TechRank</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background-color: #f4f4f4;
+            margin: 0;
+            padding: 0;
+            color: #333;
+        }
+
+        header {
+            background-color: #007BFF;
+            color: white;
+            padding: 20px;
+            text-align: center;
+        }
+
+        .category-container {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex-wrap: wrap;
+            max-width: 1000px;
+            margin: 40px auto;
+            gap: 20px;
+        }
+
+        .category-card {
+            background-color: white;
+            border-radius: 12px;
+            padding: 20px;
+            width: 250px;
+            text-align: center;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s;
+        }
+
+        .category-card:hover {
+            transform: scale(1.05);
+        }
+
+        .category-card h2 {
+            margin: 0;
+            font-size: 24px;
+            color: #007BFF;
+        }
+
+        .category-card p {
+            color: #555;
+        }
+
+        .category-card a {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            text-decoration: none;
+            border-radius: 8px;
+            font-size: 16px;
+        }
+
+        .category-card a:hover {
+            background-color: #0056b3;
+        }
+
+        footer {
+            text-align: center;
+            padding: 20px;
+            margin-top: 40px;
+            background-color: #007BFF;
+            color: white;
+        }
+
+        .home-button {
+            background-color: #f0f0f0;
+            color: #333;
+            padding: 12px 20px;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            font-size: 16px;
+            margin-bottom: 10px;
+            text-decoration: none;
+            display: inline-block;
+        }
+
+        .home-button:hover {
+            background-color: #ddd;
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <h1>Categories - TechRank</h1>
+        <p>Select a category to explore related problems and challenges.</p>
+    </header>
+
+    <!-- Back to Home button -->
+    <a href="index.html" class="home-button">🏠 Back to Home</a>
+
+    <!-- Category Cards -->
+    <div class="category-container">
+        <!-- Mathematics -->
+        <div class="category-card">
+            <h2>➗ Mathematics</h2>
+            <p>Test your skills in algebra, geometry, calculus, and more!</p>
+            <a href="math.html">Explore Mathematics</a> <!-- Link to math problems page -->
+        </div>
+
+        <!-- Physics -->
+        <div class="category-card">
+            <h2>🔭 Physics</h2>
+            <p>Take on challenges in mechanics, thermodynamics, electromagnetism, and more!</p>
+            <a href="physics.html">Explore Physics</a> <!-- Link to physics problems page -->
+        </div>
+
+        <!-- Chemistry -->
+        <div class="category-card">
+            <h2>⚗️ Chemistry</h2>
+            <p>Solve problems involving chemical reactions, thermochemistry, and more!</p>
+            <a href="chemistry.html">Explore Chemistry</a> <!-- Link to chemistry problems page -->
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 TechRank. All rights reserved.</p>
+    </footer>
+</body>
+</html>
