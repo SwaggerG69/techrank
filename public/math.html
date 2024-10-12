@@ -179,6 +179,11 @@
         let currentProblem;
         let currentDifficulty = 'counting'; // Default difficulty level for math
     
+        // Retrieve or create a user from localStorage
+        let loggedInUser = JSON.parse(localStorage.getItem('loggedInUser')) || { name: 'User', elo: 1000 }; 
+        const userInfoDiv = document.getElementById('user-info');
+        userInfoDiv.textContent = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo}`;
+    
         // Function to load problems based on difficulty
         function loadProblems(difficulty) {
             currentDifficulty = difficulty;
@@ -195,9 +200,22 @@
             document.getElementById("result-message").textContent = ""; // Clear result message
         }
     
-        // Function to capitalize first letter of difficulty
+        // Function to capitalize the first letter of difficulty
         function capitalize(str) {
             return str.charAt(0).toUpperCase() + str.slice(1);
+        }
+    
+        // Function to determine Elo points change based on difficulty
+        function getEloChange() {
+            if (currentDifficulty === 'counting') {
+                return { correct: 20, incorrect: -10 };
+            } else if (currentDifficulty === 'algebra') {
+                return { correct: 50, incorrect: -20 };
+            } else if (currentDifficulty === 'calculus') {
+                return { correct: 100, incorrect: -40 };
+            } else if (currentDifficulty === 'infinity') {
+                return { correct: 200, incorrect: -100 }; // Larger Elo for the Good Luck category
+            }
         }
     
         // Function to submit the answer and check correctness
@@ -206,17 +224,33 @@
             const correctAnswer = currentProblem.answer;
             const resultMessage = document.getElementById("result-message");
     
-            if (userAnswer == correctAnswer) {
-                resultMessage.textContent = "Correct! You earned points!";
+            const eloChange = getEloChange();
+    
+            if (parseFloat(userAnswer) === parseFloat(correctAnswer)) {
+                // Correct answer: increase Elo points
+                loggedInUser.elo += eloChange.correct;
+                resultMessage.textContent = `Correct! You earned ${eloChange.correct} Elo points!`;
                 resultMessage.style.color = "green";
             } else {
-                resultMessage.textContent = "Incorrect. Try again!";
+                // Incorrect answer: decrease Elo points
+                loggedInUser.elo += eloChange.incorrect;
+                if (loggedInUser.elo < 0) {
+                    loggedInUser.elo = 0;  // Ensure Elo doesn't go below 0
+                }
+                resultMessage.textContent = `Incorrect. You lost ${Math.abs(eloChange.incorrect)} Elo points.`;
                 resultMessage.style.color = "red";
             }
+    
+            // Update the user's Elo score in localStorage
+            localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+    
+            // Update the displayed user info
+            userInfoDiv.textContent = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo}`;
         }
     
         // Load the first problem when the page loads
         loadNewProblem();
     </script>
+    
 </body>
 </html>

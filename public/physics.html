@@ -200,19 +200,24 @@
         }
     
         // Function to submit the answer and check correctness
-        function submitAnswer() {
-            const userAnswer = document.getElementById("answer").value;
-            const correctAnswer = currentProblem.answer;
-            const resultMessage = document.getElementById("result-message");
-    
-            if (userAnswer == correctAnswer) {
-                resultMessage.textContent = "Correct! You earned points!";
-                resultMessage.style.color = "green";
-            } else {
-                resultMessage.textContent = "Incorrect. Try again!";
-                resultMessage.style.color = "red";
-            }
+        if (parseFloat(userAnswer) === parseFloat(correctAnswer)) {
+            resultMessage.textContent = "Correct! You earned 20 Elo points!";
+            resultMessage.style.color = "green";
+            loggedInUser.elo += 20; // Increase Elo points
+        } else {
+            resultMessage.textContent = `Incorrect! You lost 10 Elo points. The correct answer was ${correctAnswer}`;
+            resultMessage.style.color = "red";
+            loggedInUser.elo -= 10; // Decrease Elo points
         }
+
+        // Prevent Elo from going below 0
+        if (loggedInUser.elo < 0) {
+            loggedInUser.elo = 0;
+        }
+
+        // Update Elo in the local storage and display
+        localStorage.setItem('loggedInUser', JSON.stringify(loggedInUser));
+        userInfoDiv.textContent = `Logged in as: ${loggedInUser.name} | Elo: ${loggedInUser.elo}`;
     
         // Load the first problem when the page loads
         loadNewProblem();
